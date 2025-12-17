@@ -5,13 +5,11 @@ This small project converts Termux radio/GPS CSV logs into interactive heatmaps 
 What this repo contains
 - `plot_heatmap.py` — Python script that reads CSV logs and writes an interactive HTML heatmap.
 - `requirements.txt` — Python dependencies (`pandas`, `folium`).
-- `radio_log.csv`, `radio_log2.csv` — example logs collected from Termux (different layouts).
-- `radio_heatmap.html`, `radio2_heatmap.html`, `radio_heatmap_check1.html`, `radio_heatmap_check2.html` — example outputs generated during testing.
 - `android-setup.md` — instructions for setting up Termux on Android.
 - `make-heatmaps-setup.md` — quick usage notes and examples for generating heatmaps.
 
 Key features
-- Automatic detection of latitude/longitude columns, including CSVs where lat or lon appear in the index (as in `radio_log2.csv`).
+- Automatic detection of latitude/longitude columns, including CSVs where lat or lon appear in the index (index required)
 - Heuristic detection of RSSI-like columns (wifi and cell) and mapping RSSI dBm to heatmap weights.
 - CLI options to tune radius, blur, weighting mode, and to serve the output locally.
 
@@ -56,5 +54,3 @@ Links to project notes
 Troubleshooting notes
 - If the script fails to detect lat/lon, check the CSV header or attachment format. Logs produced by Termux sometimes shift columns; the script has heuristics but you can open the CSV and confirm the `lat`/`lon` fields.
 - If RSSI values are absent, use `--weight count` to plot sample density instead.
-
-If you want, I can add a short `test.sh` that runs the two example commands and produces both HTML files for easy sharing.
